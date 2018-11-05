@@ -49,8 +49,8 @@ public class CheckMainMenuTest extends BaseScript {
         String NameOfPageBeforeRefresh;
         String NameOfPageAfterRefresh;
         String NameOfElement;
-        for(int i = 0; i < datesSubMenus.size(); i++){
-            WebElement button = driver.findElement(By.xpath("//*[contains(@data-submenu, '" + datesSubMenus.get(i) + "')]"));
+        for(String ElemOfSubMebu:datesSubMenus){
+            WebElement button = driver.findElement(By.xpath("//*[contains(@data-submenu, '" + ElemOfSubMebu + "')]"));
             NameOfElement = button.getText();
             System.out.println(NameOfElement);
             button.click();
