@@ -12,16 +12,16 @@ public class LoginTest extends BaseScript {
         String Password = "Xcg7299bnSmMuRLp9ITw";
 
         //Start Chromedriver and go to admin page
-        WebDriver driver = getDriver();
-        driver.manage().window().maximize();
-        driver.get(Properties.getBaseAdminUrl());
+        WebDriver Driver = getDriver();
+        Driver.manage().window().maximize();
+        Driver.get(Properties.getBaseAdminUrl());
         sleep(5000);
 
         //login
-        login(Email, Password, driver);
+        login(Email, Password, Driver);
 
         //logout and close driver
-        logout(driver);
-        driver.quit();
+        logout(Driver);
+        Driver.quit();
     }
 }

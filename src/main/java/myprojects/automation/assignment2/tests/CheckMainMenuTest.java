@@ -14,39 +14,45 @@ public class CheckMainMenuTest extends BaseScript {
         String Password = "Xcg7299bnSmMuRLp9ITw";
 
         //Start Chromedriver and go to admin page
-        WebDriver driver = getDriver();
-        driver.manage().window().maximize();
-        driver.get(Properties.getBaseAdminUrl());
+        WebDriver Driver = getDriver();
+        Driver.manage().window().maximize();
+        Driver.get(Properties.getBaseAdminUrl());
         sleep(5000);
 
         //login
-        login(Email, Password, driver);
+        login(Email, Password, Driver);
 
         //check elements of menu
-        List <WebElement> ElemOfMenu = driver.findElements(By.xpath("//nav/ul/li/a/i[@class='material-icons']/parent::a/parent::li"));
+        List <WebElement> ElemOfMenu = Driver.findElements(By.xpath("//ul[@class='main-menu' or @class='menu']/child::li[not(span or div)]"));
         for(int i = 0; i < ElemOfMenu.size(); i++){
             ElemOfMenu.clear();
-            ElemOfMenu = driver.findElements(By.xpath("//nav/ul/li/a/i[@class='material-icons']/parent::a/parent::li"));
-            checkElemOfMenu(driver, ElemOfMenu.get(i));
+            ElemOfMenu = Driver.findElements(By.xpath("//ul[@class='main-menu' or @class='menu']/child::li[not(span or div)]"));
+            checkElemOfMenu(Driver, ElemOfMenu.get(i));
         }
 
         //logout and close driver
-        logout(driver);
-        driver.quit();
+        logout(Driver);
+        Driver.quit();
     }
 
-    private static void checkElemOfMenu(WebDriver driver, WebElement ButtonInMenu){
+    private static void checkElemOfMenu(WebDriver Driver, WebElement ButtonInMenu){
         String NameOfPageBeforeRefresh;
         String NameOfPageAfterRefresh;
         String NameOfElement;
+        WebElement TitleOfPage = null;
+
         NameOfElement = ButtonInMenu.getText();
         System.out.println(NameOfElement);
         ButtonInMenu.click();
         sleep(5000);
-        NameOfPageBeforeRefresh = driver.getTitle();
-        driver.navigate().refresh();
+
+        TitleOfPage = Driver.findElement(By.xpath("//h2[@class='title' or @class='page-title']"));
+        NameOfPageBeforeRefresh = TitleOfPage.getText();
+        Driver.navigate().refresh();
         sleep(5000);
-        NameOfPageAfterRefresh = driver.getTitle();
+
+        TitleOfPage = Driver.findElement(By.xpath("//h2[@class='title' or @class='page-title']"));
+        NameOfPageAfterRefresh = TitleOfPage.getText();
         NameOfPageBeforeRefresh = NameOfPageBeforeRefresh.replaceAll("\\s+","");
         NameOfPageAfterRefresh = NameOfPageAfterRefresh.replaceAll("\\s+","");
         if(NameOfPageBeforeRefresh.equals(NameOfPageAfterRefresh))

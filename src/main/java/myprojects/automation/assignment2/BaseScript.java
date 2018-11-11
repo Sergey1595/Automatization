@@ -13,23 +13,23 @@ public abstract class BaseScript {
         //throw new UnsupportedOperationException("Method doesn't return WebDriver instance");
     }
 
-    public static void login(String Email, String Password, WebDriver driver){
-        WebElement fieldEmail = driver.findElement(By.id("email"));
-        WebElement fieldPass = driver.findElement(By.id("passwd"));
-        WebElement buttonSignIn = driver.findElement(By.name("submitLogin"));
-        fieldEmail.sendKeys(Email);
-        fieldPass.sendKeys(Password);
+    public static void login(String Email, String Password, WebDriver Driver){
+        WebElement FieldEmail = Driver.findElement(By.id("email"));
+        WebElement FieldPass = Driver.findElement(By.id("passwd"));
+        WebElement ButtonSignIn = Driver.findElement(By.name("submitLogin"));
+        FieldEmail.sendKeys(Email);
+        FieldPass.sendKeys(Password);
         sleep(2000);
-        buttonSignIn.click();
+        ButtonSignIn.click();
         sleep(5000);
     }
 
-    public static void logout(WebDriver driver){
-        WebElement headerEmplBox = driver.findElement(By.id("header_employee_box"));
-        WebElement buttonExit = driver.findElement(By.id("header_logout"));
-        headerEmplBox.click();
+    public static void logout(WebDriver Driver){
+        WebElement HeaderEmplBox = Driver.findElement(By.id("header_employee_box"));
+        WebElement ButtonExit = Driver.findElement(By.id("header_logout"));
+        HeaderEmplBox.click();
         sleep(2000);
-        buttonExit.click();
+        ButtonExit.click();
         sleep(5000);
     }
 
