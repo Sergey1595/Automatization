@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CreateCategoryTest extends BaseScript {
     public static void main(String[] args) throws InterruptedException {
-        // TODO prepare driver object
         WebDriver Driver = getConfiguredDriver();
         String Email = "webinar.test@gmail.com";
         String Password = "Xcg7299bnSmMuRLp9ITw";
@@ -23,8 +22,11 @@ public class CreateCategoryTest extends BaseScript {
         // create category
         genAction.createCategory(CategoryName);
         // check that new category appears in Categories table
-        genAction.sortedByCategoryName("asdasdas");
+        genAction.sortedByCategoryName(CategoryName);
         genAction.checkAddedCategories();
         // finish script
+        genAction.logout();
+        //close web driver
+        genAction.closeWebDriver();
     }
 }

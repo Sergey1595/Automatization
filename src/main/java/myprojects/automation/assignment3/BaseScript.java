@@ -14,8 +14,8 @@ import java.util.concurrent.TimeUnit;
 public abstract class BaseScript {
 
     public static WebDriver getDriver() {
-        String browser = Properties.getBrowser();
-        switch (browser) {
+        String Browser = Properties.getBrowser();
+        switch (Browser) {
             case "firefox":
                 System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "//src//main//resources//geckodriver.exe");
                 return new FirefoxDriver();
@@ -40,7 +40,5 @@ public abstract class BaseScript {
         driver.manage().window().maximize();
 
         return driver;
-        // TODO configure browser window (set timeouts, browser pindow position) and connect loggers.
-        //throw new UnsupportedOperationException("Method doesn't return configured WebDriver instance");
     }
 }

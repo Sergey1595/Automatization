@@ -37,8 +37,6 @@ public class GeneralActions {
         Wait.until(ExpectedConditions.textToBePresentInElementValue(By.id("passwd"), Password));
 
         ButtonSignIn.click();
-
-        //throw new UnsupportedOperationException();
     }
 
     public void createCategory(String CategoryName) {
@@ -102,7 +100,6 @@ public class GeneralActions {
         ButtonSearcCategory.click();
     }
 
-
     public void checkAddedCategories(){
         Wait.until(ExpectedConditions.presenceOfElementLocated(By.id("table-category")));
         List <WebElement> FoundCategoryes = Driver.findElements(By.xpath("//tr[@id]//td[3]"));
@@ -112,7 +109,19 @@ public class GeneralActions {
         }
         System.out.println("Found " + FoundCategoryes.size() + " categories.");
     }
-    public void waitForContentLoad() {
-        Wait.until(ExpectedConditions.visibilityOfAllElements());
+
+    public void logout(){
+        Wait.until(ExpectedConditions.presenceOfElementLocated(By.id("header_employee_box")));
+        WebElement HeaderEmplBox = Driver.findElement(By.id("header_employee_box"));
+        HeaderEmplBox.click();
+
+        Wait.until(ExpectedConditions.presenceOfElementLocated(By.id("header_logout")));
+        WebElement ButtonExit = Driver.findElement(By.id("header_logout"));
+        Wait.until(ExpectedConditions.visibilityOf(ButtonExit));
+        ButtonExit.click();
+    }
+
+    public void closeWebDriver(){
+        Driver.quit();
     }
 }
